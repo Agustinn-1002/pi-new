@@ -1,10 +1,13 @@
 import './App.css';
+import {useSelector,useDispatch} from 'react-redux'
+import LandingPage from './components/LandingPage'
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Henry Pokemon</h1>
-    </div>
+      <LandingPage/>
+    </div> 
   );
 }
 
