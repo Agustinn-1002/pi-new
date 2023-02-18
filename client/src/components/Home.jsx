@@ -4,17 +4,24 @@ import { getdataPoke } from '../redux/actions'
 import Cards from './Cards'
 import Loader from './Loader'
 
+
 const Home = () => {
-  const [loader , setLoader ] = useState(true)
+
   const dispatch = useDispatch()
   const dataPoke = useSelector(e => e.getAllDataPokemons)
+  
   useEffect(() => {
     dispatch(getdataPoke())
   },[])
 
   return (
     <div>
-      {dataPoke.length == 0 ? <Loader/> : <Cards/>}
+      
+      {dataPoke.length == 0 ? <Loader/> : 
+        <>
+          <Cards/>
+        </>
+      }
     </div>
   )
 }

@@ -1,0 +1,8 @@
+.conteiner{
+    display: flex;
+    background-color: red;
+}
+.index{
+    cursor: pointer;
+    margin: 10px;
+}
