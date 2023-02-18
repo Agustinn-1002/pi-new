@@ -1,35 +1,40 @@
 .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background-image: url('https://e7.pngegg.com/pngimages/1001/304/png-clipart-pokemon-go-poke-ball-pokemon-go-trademark-logo.png');
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  border: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #2468B1 transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
-  .loader::before ,  .loader::after {
-      content: '';
-      width: 20px;
-      height: 20px;
-      display: block;
-      position: relative;
-      margin: 10px auto ;
-      border-radius: 50%;
-      background: #000;
-      animation: left 1s infinite ease-in-out;
-    }
-    .loader::after {
-      background: #FF3D00;
-      animation: right 1s infinite ease-in-out;
-    }
-
-
-  @keyframes right {
-    0% , 100%{transform: translate(-15px) }
-    50% { transform: translate(15px) }
+  100% {
+    transform: rotate(360deg);
   }
-
-  @keyframes left {
-    0% , 100%{ transform: translate(15px) }
-    50% { transform: translate(-15px) }
-  }
-
-  
-  
+} 
