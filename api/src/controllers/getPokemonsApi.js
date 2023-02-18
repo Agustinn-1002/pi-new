@@ -9,6 +9,7 @@ const getApi = async () => {
         e.image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`;
         e.types = data.types.map(i => i.type);
         e.attack = data.stats[1]['base_stat'];
+        e.hp = data.stats[0]['base_stat'];
     }
     return info;
 }

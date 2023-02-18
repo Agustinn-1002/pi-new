@@ -1,13 +1,17 @@
 const initialState = {
-    saludo: null
+    getDataPokemons: [],
+    getAllDataPokemons: [],
+    types: [],
+    getDataDetailsPoke: []
 } 
 
 function rootReducer(state = initialState , action){
     switch (action.type) {
-        case 'SALUDO':
+        case 'GET-All-POKEMONS':
             return {
                 ...state,
-                saludo: action.payload
+                getDataPokemons: action.payload,
+                getAllDataPokemons: action.payload
             }
         default:
             return {
