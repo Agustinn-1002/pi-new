@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCurrentPage } from '../redux/actions'
 import e from '../styles/Paginado.module.css'
 
 const Paginado = ({pokePorPagina , dataPoke , paginado}) => {
@@ -8,10 +10,22 @@ const Paginado = ({pokePorPagina , dataPoke , paginado}) => {
         pageNumbers.push(i+1)
     }
 
+    const activePage = useSelector(e => e.currentPage)
+    const dispatch = useDispatch()
+
     return (
         <nav className={e.conteiner}>
-                {pageNumbers && pageNumbers.map(e => 
-                    <a className={e.index} key={e} onClick={() => paginado(e)}>{e}</a>
+                {pageNumbers && pageNumbers.map(i => 
+                    <div onClick={() => {
+                        dispatch(setCurrentPage(i));
+                        window.scroll({
+                            top: 0,
+                            left: 0,
+                            behavior: 'smooth'
+                          })
+                        }}>
+                        <a className={activePage == i ? `${e.active} ${e.element }`: e.element} key={i} onClick={() => paginado(i)}>{i}</a>
+                    </div>
                 )}
         </nav>
     )

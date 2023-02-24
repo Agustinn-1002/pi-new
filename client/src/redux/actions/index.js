@@ -9,3 +9,10 @@ export function getdataPoke () {
         })
     }    
 }
+
+export function setCurrentPage (page) {
+    return {
+        type: 'SET-CURRENT',
+        payload: page
+    }
+}

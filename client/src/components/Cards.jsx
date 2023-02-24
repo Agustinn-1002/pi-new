@@ -34,7 +34,12 @@ const Cards = () => {
               attack = {e.attack}
             />
           )
-        }  
+        }
+        <Paginado 
+            pokePorPagina={pokePorPagina}
+            dataPoke={dataPoke.length}
+            paginado={paginado}
+          />  
     </div>
   )
 }

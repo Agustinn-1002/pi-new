@@ -2,7 +2,8 @@ const initialState = {
     getDataPokemons: [],
     getAllDataPokemons: [],
     types: [],
-    getDataDetailsPoke: []
+    getDataDetailsPoke: [],
+    currentPage: 1,
 } 
 
 function rootReducer(state = initialState , action){
@@ -13,12 +14,16 @@ function rootReducer(state = initialState , action){
                 getDataPokemons: action.payload,
                 getAllDataPokemons: action.payload
             }
+        case 'SET-CURRENT':
+            return {
+                ...state,
+                currentPage: action.payload
+            }
         default:
             return {
                 ...state,
             }
     }
-    return 'hola'
 }
 
 export default rootReducer;
