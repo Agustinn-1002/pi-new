@@ -1,0 +1,30 @@
+.containTypes{
+    position: absolute;
+    left: 0;
+    margin-left: 10%;
+    font-size: 15px;
+    line-height:1px;
+    text-align: left;
+}
+.containTypes h2{
+    padding: 15px 0;
+}
+.containTypes p{
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+
+.containTypes p:hover{
+    color: #aaa;
+}
+
+.active{
+    border-bottom:2px solid #2468B1 ;
+    color: #2468B1;
+}
+
+
+.containOrder{
+    position: absolute;
+    left: 0;
+}

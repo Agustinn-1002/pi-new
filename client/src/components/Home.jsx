@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import { getdataPoke } from '../redux/actions'
+import { filterByOrder, getdataPoke, getTypes } from '../redux/actions'
 import Cards from './Cards'
 import Loader from './Loader'
 
@@ -8,16 +8,18 @@ import Loader from './Loader'
 const Home = () => {
 
   const dispatch = useDispatch()
-  const dataPoke = useSelector(e => e.getAllDataPokemons)
+  const dataAllPoke = useSelector(e => e.getAllDataPokemons)
   
   useEffect(() => {
     dispatch(getdataPoke())
-  },[])
+    dispatch(getTypes())
+    // dispatch(filterByOrder('asc'))
+  },[dispatch])
 
   return (
     <div>
       
-      {dataPoke.length == 0 ? <Loader/> : 
+      {dataAllPoke.length === 0 ? <Loader/> : 
         <>
           <Cards/>
         </>

@@ -15,6 +15,7 @@ router.get('/', async (req,res) => {
         let date = await getByNameApi(name)
         let arrPokemon = [];
         const pokeDb = await Pokemon.findOne({
+            order:['name','ASC'],
             where: {
                 name: name.toLowerCase()
             },
@@ -44,7 +45,7 @@ router.get('/', async (req,res) => {
 })
 
 router.post('/', async (req, res) => {
-    const { name, hp, attack, defense, speed, height, weight, types, image} = req.body;
+    const { name, hp, attack, defense, speed, createdInDb,height, weight, types, image} = req.body;
     if(!name) throw new Error('Faltan datos obligatorios!') 
     try {
         const newPokemon = await Pokemon.create({
@@ -55,6 +56,7 @@ router.post('/', async (req, res) => {
             speed,
             height,
             weight,
+            createdInDb,
             image
         });
 

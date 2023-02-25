@@ -16,7 +16,7 @@ const Paginado = ({pokePorPagina , dataPoke , paginado}) => {
     return (
         <nav className={e.conteiner}>
                 {pageNumbers && pageNumbers.map(i => 
-                    <div onClick={() => {
+                    <div key={i} onClick={() => {
                         dispatch(setCurrentPage(i));
                         window.scroll({
                             top: 0,

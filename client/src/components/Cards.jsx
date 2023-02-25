@@ -3,17 +3,18 @@ import { useSelector } from 'react-redux'
 import Card from './Card'
 import e from '../styles/Cards.module.css'
 import Paginado from './Paginado'
+import Filters from './Filters'
 
 const Cards = () => {
 
-  const dataPoke = useSelector(e => e.getAllDataPokemons)
+  const dataPoke = useSelector(e => e.getDataPokemons)
 
   const [ paginaActual , setPaginaActual ] = useState(1);
   const [ pokePorPagina , setPokePorPagina ] = useState(12);
   const indexUltimoPoke = paginaActual * pokePorPagina;
   const indexPrimerPersonaje = indexUltimoPoke - pokePorPagina;
-  const pokePaginaAcutal = dataPoke.slice(indexPrimerPersonaje , indexUltimoPoke)
-
+  const pokePaginaAcutal = dataPoke.length && dataPoke.slice(indexPrimerPersonaje , indexUltimoPoke)
+  
   const paginado = (pageNumber) => {
     setPaginaActual(pageNumber)
   }
@@ -25,15 +26,18 @@ const Cards = () => {
             dataPoke={dataPoke.length}
             paginado={paginado}
           />
-        {
+        <Filters paginado={paginado}/>
+        { dataPoke.length > 0 ? 
           dataPoke.length && pokePaginaAcutal.map(e => 
             <Card 
+              key = {e.id}
               image = {e.image}
               name = {e.name}
-              hp ={e.hp}
-              attack = {e.attack}
+              types = {e.types}
             />
           )
+          :
+          <h2>{dataPoke.msg}</h2>
         }
         <Paginado 
             pokePorPagina={pokePorPagina}

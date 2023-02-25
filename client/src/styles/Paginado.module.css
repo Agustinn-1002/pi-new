@@ -4,14 +4,14 @@
     justify-content: space-around;
     width: 100px;
     height: 40px;
-    cursor: pointer;
     margin: 10px 0;
 }
 .element{
     padding:12px 15px;
     margin:10px;
     border-radius: 10px;
-    border: 1px solid #aaa; 
+    border: 1px solid #aaa;
+    cursor: pointer;
 }
 .active{
     background-color: red;

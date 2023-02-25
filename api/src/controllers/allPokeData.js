@@ -9,5 +9,5 @@ const allDataPoke = async () => {
 }  
 
 module.exports ={
-    allDataPoke
+    allDataPoke,
 }

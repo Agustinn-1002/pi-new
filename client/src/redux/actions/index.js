@@ -10,9 +10,30 @@ export function getdataPoke () {
     }    
 }
 
+export function getTypes () {
+    return async function (dispatch) {
+        const types = await axios.get('http://localhost:3001/types');
+        return dispatch({
+            type: 'GET-All-TYPES',
+            payload:types.data
+        })
+    }    
+}
+
 export function setCurrentPage (page) {
     return {
         type: 'SET-CURRENT',
         payload: page
     }
+}
+
+export function filterByTypes(tipo) {
+    return {
+        type: 'FILTER-TYPES',
+        payload: tipo
+    }
+}
+
+export function filterByOrder(tipo){
+    return { type: 'FILTER-ORDER', payload: tipo}
 }
