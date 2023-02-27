@@ -46,6 +46,7 @@ function rootReducer(state = initialState , action){
             }
             return {
                 ...state,
+                createDbOrNot: 'All',
                 typesActual: action.payload,
                 getDataPokemons: newArray
             }
@@ -97,6 +98,8 @@ function rootReducer(state = initialState , action){
             if(action.payload === 'getDB' && !createOrNot.length) {
                 return {
                     ...state,
+                    typesActual: 'All',
+                    createDbOrNot: action.payload,
                     getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
                 }
             }
