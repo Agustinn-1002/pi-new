@@ -14,7 +14,7 @@ const Home = () => {
     dispatch(getdataPoke())
     dispatch(getTypes())
     // dispatch(filterByOrder('asc'))
-  },[dispatch])
+  },[])
 
   return (
     <div>
