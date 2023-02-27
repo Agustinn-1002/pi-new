@@ -37,3 +37,7 @@ export function filterByTypes(tipo) {
 export function filterByOrder(tipo){
     return { type: 'FILTER-ORDER', payload: tipo}
 }
+
+export function filterByCreateOrNot(tipo){
+    return { type: 'FILTER-CREATED', payload: tipo}
+}

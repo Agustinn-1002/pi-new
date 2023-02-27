@@ -6,6 +6,7 @@ const Card = (props) => {
     <div className={e.cardPoke}>
       <img src={props.image} alt="" />
       <p>{props.name}</p>
+      <p>{props.attack}</p>
       <p>tipo: 
         {
           props.types.length && props.types.map(e => 

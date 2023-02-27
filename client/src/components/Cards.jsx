@@ -6,8 +6,9 @@ import Paginado from './Paginado'
 import Filters from './Filters'
 
 const Cards = () => {
-
+  let i = 1
   const dataPoke = useSelector(e => e.getDataPokemons)
+  const [ orden , setOrden ] = useState('');
 
   const [ paginaActual , setPaginaActual ] = useState(1);
   const [ pokePorPagina , setPokePorPagina ] = useState(12);
@@ -19,32 +20,42 @@ const Cards = () => {
     setPaginaActual(pageNumber)
   }
 
+  const ordenador = (valor) =>{
+    setOrden(valor)
+  }
+
   return (
-    <div className={e.containerCards}>
-        <Paginado 
-            pokePorPagina={pokePorPagina}
-            dataPoke={dataPoke.length}
-            paginado={paginado}
-          />
-        <Filters paginado={paginado}/>
-        { dataPoke.length > 0 ? 
-          dataPoke.length && pokePaginaAcutal.map(e => 
-            <Card 
-              key = {e.id}
-              image = {e.image}
-              name = {e.name}
-              types = {e.types}
-            />
-          )
-          :
-          <h2>{dataPoke.msg}</h2>
-        }
-        <Paginado 
-            pokePorPagina={pokePorPagina}
-            dataPoke={dataPoke.length}
-            paginado={paginado}
-          />  
-    </div>
+    <>
+      <Filters paginado={paginado} ordenador={ordenador}/>
+      <Paginado 
+          pokePorPagina={pokePorPagina}
+          dataPoke={dataPoke.length}
+          paginado={paginado}
+        />
+      <div className={e.containerCardsFlex}>
+        <div className={e.containerCards}>
+          { dataPoke.length > 0 ? 
+            dataPoke.length && pokePaginaAcutal.map(p => 
+              <Card 
+                key = {p.id}
+                image = {p.image}
+                name = {p.name}
+                types = {p.types}
+                attack = {p.attack}
+                className = {`e.div${i++}`}
+              />
+            )
+            :
+            <h2>{dataPoke.msg}</h2>
+          }
+        </div>
+      </div>
+      <Paginado 
+          pokePorPagina={pokePorPagina}
+          dataPoke={dataPoke.length}
+          paginado={paginado}
+        />  
+    </>
   )
 }
 

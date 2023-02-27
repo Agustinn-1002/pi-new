@@ -1,20 +1,29 @@
-.containTypes{
-    position: absolute;
+.contain{
+    position: fixed;
+    display: flex;
     left: 0;
-    margin-left: 10%;
+    top:20px;
+    width: 30rem;
+    justify-content: space-around;
+    align-items: flex-start;
+    z-index: 100000;
+}
+
+
+.containTypes , .containOrder , .containCreated{
     font-size: 15px;
     line-height:1px;
     text-align: left;
 }
-.containTypes h2{
+.containTypes h2 , .containOrder h2 , .containCreated h2 {
     padding: 15px 0;
 }
-.containTypes p{
+.containTypes p , .containOrder p , .containCreated p {
     cursor: pointer;
     padding-bottom: 10px;
 }
 
-.containTypes p:hover{
+.containTypes p:hover , .containOrder p:hover , .containCreated p:hover{
     color: #aaa;
 }
 
@@ -23,8 +32,7 @@
     color: #2468B1;
 }
 
-
-.containOrder{
-    position: absolute;
-    left: 0;
+.desabilitado{
+    cursor: not-allowed !important;
+    color: #bbb;
 }
