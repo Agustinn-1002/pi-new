@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import { getDetaildDataPoke } from '../redux/actions';
+import { filterByCreateOrNot, filterByOrder, filterByTypes, getDetaildDataPoke, setCurrentPage } from '../redux/actions';
 import Loader from './Loader';
 import {Link} from 'react-router-dom'
 import {BsArrowReturnLeft} from 'react-icons/bs'
+import s from '../styles/PokeDetald.module.css'
 
 const PokeDetaild = () => {
   const { id } = useParams();
@@ -15,14 +16,21 @@ const PokeDetaild = () => {
     dispatch(getDetaildDataPoke(id))
   },[])
 
+  const reset = () => {
+    dispatch(setCurrentPage(1))
+    dispatch(filterByTypes('All'))
+    dispatch(filterByOrder('asc'))
+    dispatch(filterByCreateOrNot('All'))
+  }
+
   console.log(getDataDetailsPoke);
   return (
     <>
       {
         !getDataDetailsPoke.length ? <Loader/> : 
         getDataDetailsPoke.map(e =>   
-          <div key={e.id}>
-            <Link to={'/Home'}>
+          <div key={e.id} className={s.container}>
+            <Link to={'/Home'} className={s.volver} onClick={()=>reset()}>
               <BsArrowReturnLeft/>
             </Link>
             <img src={e.image} alt="" />

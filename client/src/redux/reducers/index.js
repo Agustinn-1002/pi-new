@@ -41,7 +41,27 @@ function rootReducer(state = initialState , action){
                 currentPage: action.payload
             }
         case 'FILTER-TYPES':
-            let newArray = action.payload === 'All' ? state.getAllDataPokemons : state.getAllDataPokemons.filter(t => t.types.includes(action.payload))
+
+            let arrayApi = state.getAllDataPokemons.filter(p => !p.createdInDb)
+            let arrayDb= state.getAllDataPokemons.filter(p => p.createdInDb)
+            let newArray = 
+                action.payload === 'All' ? 
+                    state.createDbOrNot === "getApi" ? 
+                        state.getAllDataPokemons.filter(p => !p.createdInDb)
+                        : 
+                        state.createDbOrNot === "getDB" ? 
+                            arrayDb
+                            : 
+                            state.getAllDataPokemons               
+                    : 
+                    state.createDbOrNot === "getApi" ? 
+                        arrayApi.filter(t => t.types.includes(action.payload)) 
+                        :
+                        state.createDbOrNot === "getDB" ? 
+                            arrayDb.filter(t => t.types.includes(action.payload)) 
+                            :                       
+                            state.getAllDataPokemons.filter(t => t.types.includes(action.payload))
+            
             if (!newArray.length) {
                 return {
                     ...state,
@@ -49,9 +69,10 @@ function rootReducer(state = initialState , action){
                     getDataPokemons: {msg: `NO SE ENCONTRO NUNGUN POKEMON CON EL TIPO ${action.payload.toUpperCase()}`}
                 }
             }
+            console.log(state.getAllDataPokemons.length);
             return {
                 ...state,
-                createDbOrNot: 'All',
+                orderActual: 'asc',
                 typesActual: action.payload,
                 getDataPokemons: newArray
             }
@@ -104,6 +125,7 @@ function rootReducer(state = initialState , action){
                 return {
                     ...state,
                     typesActual: 'All',
+                    
                     createDbOrNot: action.payload,
                     getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
                 }
@@ -111,6 +133,7 @@ function rootReducer(state = initialState , action){
             return{
                 ...state,
                 typesActual: 'All',
+                
                 createDbOrNot: action.payload ,
                 getDataPokemons: action.payload === 'All' ? 
                     state.getAllDataPokemons 
