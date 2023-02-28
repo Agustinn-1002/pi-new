@@ -25,6 +25,11 @@ function rootReducer(state = initialState , action){
                 getDataPokemons: info,
                 getAllDataPokemons: info
             }
+        case 'GET-DETAILD-POKE':
+            return{
+                ...state,
+                getDataDetailsPoke:action.payload,
+            }
         case 'GET-All-TYPES':
             return{
                 ...state,

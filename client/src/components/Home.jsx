@@ -13,7 +13,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(getdataPoke())
     dispatch(getTypes())
-    // dispatch(filterByOrder('asc'))
   },[])
 
   return (

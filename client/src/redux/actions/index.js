@@ -20,6 +20,16 @@ export function getTypes () {
     }    
 }
 
+export function getDetaildDataPoke (id) {
+    return async function (dispatch) {
+        const detaildPoke = await axios.get(`http://localhost:3001/pokemons/${id}`);
+        return dispatch({
+            type: 'GET-DETAILD-POKE',
+            payload: detaildPoke.data
+        })
+    }    
+}
+
 export function setCurrentPage (page) {
     return {
         type: 'SET-CURRENT',

@@ -38,6 +38,7 @@ const Cards = () => {
             dataPoke.length && pokePaginaAcutal.map(p => 
               <Card 
                 key = {p.id}
+                id = {p.id}
                 image = {p.image}
                 name = {p.name}
                 types = {p.types}
