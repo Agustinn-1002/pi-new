@@ -24,10 +24,12 @@
 }
 .containTypes h2 , .containOrder h2 , .containCreated h2 {
     padding: 15px 0;
+    text-transform: uppercase;
 }
 .containTypes p , .containOrder p , .containCreated p {
     cursor: pointer;
     padding-bottom: 10px;
+    text-transform: capitalize;
 }
 
 .containTypes p:hover , .containOrder p:hover , .containCreated p:hover{

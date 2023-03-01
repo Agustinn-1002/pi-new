@@ -17,7 +17,6 @@ const Home = () => {
 
   return (
     <div>
-      
       {dataAllPoke.length === 0 ? <Loader/> : 
         <>
           <Cards/>

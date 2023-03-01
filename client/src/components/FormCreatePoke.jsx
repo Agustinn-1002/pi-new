@@ -2,7 +2,9 @@ import React from 'react'
 
 const FormCreatePoke = () => {
   return (
-    <div>FormCreatePoke</div>
+    <form>
+      <h1></h1>
+    </form>
   )
 }
 

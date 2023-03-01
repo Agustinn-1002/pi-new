@@ -66,7 +66,9 @@ function rootReducer(state = initialState , action){
                             arrayDb.filter(t => t.types.includes(action.payload)) 
                             :                       
                             state.getAllDataPokemons.filter(t => t.types.includes(action.payload))
+                            
             
+
             if (!arrayDb.length && action.payload === 'All' && state.createDbOrNot === "getDB") {
                 return {
                     ...state,
@@ -74,7 +76,7 @@ function rootReducer(state = initialState , action){
                     getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
                 }
             }
-
+            
             if (!newArray.length) {
                 return {
                     ...state,
@@ -85,52 +87,56 @@ function rootReducer(state = initialState , action){
             console.log(state.getAllDataPokemons.length);
             return {
                 ...state,
-                orderActual: 'asc',
                 typesActual: action.payload,
                 getDataPokemons: newArray
             }
-        case 'FILTER-ORDER':
-            let orderArray = [];
-            if (action.payload === 'asc') {
-                orderArray= state.getDataPokemons.sort((a,b)=>{
-                    const nA = a.name;
-                    const nB = b.name;
-                    if(nA > nB) return 1;
-                    if(nA < nB) return -1;
-                    return 0;
-                });
-            }
-            if (action.payload === 'desc') {
-                orderArray= state.getDataPokemons.sort((a,b)=>{
-                    const nA = a.name;
-                    const nB = b.name;
-                    if(nA < nB) return 1;
-                    if(nA > nB) return -1;
-                    return 0;
-                });
-            }
-            if (action.payload === 'fuerte') {
-                orderArray= state.getDataPokemons.sort((a,b)=>{
-                    const nA = a.attack;
-                    const nB = b.attack;
-                    if(nA < nB) return 1;
-                    if(nA > nB) return -1;
-                    return 0;
-                });
-            }
-            if (action.payload === 'debil') {
-                orderArray= state.getDataPokemons.sort((a,b)=>{
-                    const nA = a.attack;
-                    const nB = b.attack;
-                    if(nA < nB) return -1;
-                    if(nA > nB) return 1;
-                    return 0;
-                });
+            case 'FILTER-ORDER':
+                let orderArray = [];
+            if (state.getDataPokemons.length) {
+                if (action.payload === 'asc') {
+                    orderArray= state.getDataPokemons.sort((a,b)=>{
+                        const nA = a.name;
+                        const nB = b.name;
+                        if(nA > nB) return 1;
+                        if(nA < nB) return -1;
+                        return 0;
+                    });
+                }
+                if (action.payload === 'desc') {
+                    orderArray= state.getDataPokemons.sort((a,b)=>{
+                        const nA = a.name;
+                        const nB = b.name;
+                        if(nA < nB) return 1;
+                        if(nA > nB) return -1;
+                        return 0;
+                    });
+                }
+                if (action.payload === 'fuerte') {
+                    orderArray= state.getDataPokemons.sort((a,b)=>{
+                        const nA = a.attack;
+                        const nB = b.attack;
+                        if(nA < nB) return 1;
+                        if(nA > nB) return -1;
+                        return 0;
+                    });
+                }
+                if (action.payload === 'debil') {
+                    orderArray= state.getDataPokemons.sort((a,b)=>{
+                        const nA = a.attack;
+                        const nB = b.attack;
+                        if(nA < nB) return -1;
+                        if(nA > nB) return 1;
+                        return 0;
+                    });
+                }
+                return{
+                    ...state,
+                    orderActual: action.payload,
+                    getDataPokemons: orderArray
+                }
             }
             return{
-                ...state,
-                orderActual: action.payload,
-                getDataPokemons: orderArray
+                ...state
             }
         case 'FILTER-CREATED':
             let createOrNot = state.getAllDataPokemons.filter(p => p.createdInDb);

@@ -19,7 +19,7 @@ const SearchBar = ({falseLoader}) => {
   }
 
   return (
-    <div>
+    <form onSubmit={()=>handleSubmit(name)}>
       <input 
         type="text" 
         placeholder='Buscar Nombre ...'
@@ -27,7 +27,7 @@ const SearchBar = ({falseLoader}) => {
         value={name}
       />
       <button onClick={(e)=>handleSubmit(e)} type='submit'>Buscar</button>
-    </div>
+    </form>
   )
 }
 

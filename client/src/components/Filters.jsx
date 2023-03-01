@@ -16,16 +16,18 @@ const Filters = (props) => {
     const handleFilterByTypes= e => {
         dispatch(filterByTypes(e))
         dispatch(setCurrentPage(1))
+        dispatch(filterByOrder('asc'))
         props.paginado(1)
     }
     const handleFilterByOrder = e => {
         dispatch(filterByOrder(e))
-        dispatch(setCurrentPage(1))
-        props.paginado(1)
+        // dispatch(setCurrentPage(1))
+        // props.paginado(1)
         props.ordenador(`Ordenado ${e}`)
     }
     const handleFilterByCreate= e => {
         dispatch(filterByCreateOrNot(e))
+        dispatch(filterByOrder('asc'))
         dispatch(setCurrentPage(1))
         props.paginado(1)
     }  
