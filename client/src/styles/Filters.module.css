@@ -2,14 +2,21 @@
     position: fixed;
     display: flex;
     left: 0;
-    top:2.5rem;
+    top:10%;
     width: 30rem;
     justify-content: space-around;
     align-items: flex-start;
     z-index: 100000;
 }
 
-
+@media (max-width:1500px){
+    .contain{
+        top:0;
+    }
+    .contain div{
+        font-size: 0.9rem;
+    } 
+}
 .containTypes , .containOrder , .containCreated{
     font-size: 15px;
     line-height:1px;

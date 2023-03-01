@@ -30,6 +30,20 @@ export function getDetaildDataPoke (id) {
     }    
 }
 
+export function getSearchPokeByName (name) {
+    return async function (dispatch) {
+        try {
+            const poke = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+            return dispatch({
+                type: 'GET-SEARCH-POKE',
+                payload: poke.data
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }    
+}
+
 export function setCurrentPage (page) {
     return {
         type: 'SET-CURRENT',

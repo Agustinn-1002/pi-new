@@ -7,7 +7,7 @@ const getByNameApi = async (name) => {
             id: data.id,
             name: data.name,
             image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${ data.id }.svg`,
-            types: data.types.map(t => t.type),
+            types: data.types.map(t => t.type.name),
             attack: data.stats[1]['base_stat'],
             defense: data.stats[2]['base_stat'],
             hp: data.stats[0]['base_stat'],
@@ -17,7 +17,7 @@ const getByNameApi = async (name) => {
         }]
         return pokemon
     } catch (error) {
-        
+        console.log(error);
     }
     
 }

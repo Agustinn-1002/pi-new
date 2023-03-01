@@ -33,16 +33,23 @@ const PokeDetaild = () => {
             <Link to={'/Home'} className={s.volver} onClick={()=>reset()}>
               <BsArrowReturnLeft/>
             </Link>
-            <img src={e.image} alt="" />
+            <img src={e.image} alt="" className={e.imagen}/>
             <div>
               <h2>{e.name}</h2>
-              <div>
-               de tipo
+              <div className={s.types}>
+               <p>de tipo: <b style={{color:'white'}}>.</b>
                 {
                   e.types.map((i,index) => 
-                  <h3 key={index}>{i.name}</h3>
+                  <>
+                     <b>{i}</b>
+                     <b style={{color:'white'}}>.</b>
+                     /
+                     <b style={{color:'white'}}>.</b>
+
+                  </>
                   )
                 }
+                </p>
               </div>
               <h3>Numero de pokemon: {e.id}</h3>
               <h3>id: {e.id}</h3>

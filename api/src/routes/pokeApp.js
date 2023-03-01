@@ -14,8 +14,7 @@ router.get('/', async (req,res) => {
     if (name) {
         let date = await getByNameApi(name)
         let arrPokemon = [];
-        const pokeDb = await Pokemon.findOne({
-            order:['name','ASC'],
+        let pokeDb = await Pokemon.findOne({
             where: {
                 name: name.toLowerCase()
             },
@@ -29,14 +28,16 @@ router.get('/', async (req,res) => {
         })
 
         if (pokeDb) {
-            arrPokemon.push(pokeDb);
+            let infoDb = pokeDb.toJSON()
+            infoDb.types = infoDb.types.map(e=> e.name)
+            arrPokemon.push(infoDb);
             return res.status(200).send(arrPokemon)
         }
 
         if (date) {
             res.status(200).json(date);
         }else{
-            res.json({msn:'pokemon not found...'})
+            res.json({msg:'pokemon no encontrado...'})
         }
     }else{
         res.status(200).json(info);
@@ -92,7 +93,9 @@ router.get('/:id', async (req, res) => {
             },
         })
         if (pokemonDB) {
-            pokemon.push(pokemonDB);
+            let infoDb = pokemonDB.toJSON()
+            infoDb.types = infoDb.types.map(e=> e.name)
+            pokemon.push(infoDb);
             return res.status(200).send(pokemon)
         }else{
             return res.json({msn:'pokemon not found...'})

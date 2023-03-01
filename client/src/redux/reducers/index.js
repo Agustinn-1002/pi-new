@@ -40,6 +40,11 @@ function rootReducer(state = initialState , action){
                 ...state,
                 currentPage: action.payload
             }
+        case 'GET-SEARCH-POKE':
+            return {
+                ...state,
+                getDataPokemons: action.payload
+            }
         case 'FILTER-TYPES':
 
             let arrayApi = state.getAllDataPokemons.filter(p => !p.createdInDb)
@@ -62,6 +67,14 @@ function rootReducer(state = initialState , action){
                             :                       
                             state.getAllDataPokemons.filter(t => t.types.includes(action.payload))
             
+            if (!arrayDb.length && action.payload === 'All' && state.createDbOrNot === "getDB") {
+                return {
+                    ...state,
+                    typesActual: action.payload,
+                    getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
+                }
+            }
+
             if (!newArray.length) {
                 return {
                     ...state,
