@@ -6,7 +6,8 @@ import Paginado from './Paginado'
 import Filters from './Filters'
 import SearchBar from './SearchBar'
 import Loader from './Loader'
-import { Link } from 'react-router-dom'
+import FormCreatePoke from './FormCreatePoke'
+import {TbArrowBack} from 'react-icons/tb'
 
 
 const Cards = () => {
@@ -15,6 +16,29 @@ const Cards = () => {
   const [ orden , setOrden ] = useState('');
 
   const [load , setLoad]  = useState(true)
+  const [createActive , setCreateActive]  = useState(true)
+  const objInput = {  
+  name:"", 
+  hp:"", 
+  defense:"", 
+  attack:"", 
+  speed:"", 
+  height:"", 
+  weight:"",
+  types:[], 
+  image:""
+}
+  const [input, setInput] = useState({
+    name:"", 
+    hp:"", 
+    defense:"", 
+    attack:"", 
+    speed:"", 
+    height:"", 
+    weight:"",
+    types:[], 
+    image:""
+  })
 
   const [ paginaActual , setPaginaActual ] = useState(1);
   const [ pokePorPagina , setPokePorPagina ] = useState(12);
@@ -37,20 +61,35 @@ const Cards = () => {
     }, 5000);
     
   }
+  console.log(createActive);
 
   return (
     <>
-        <Filters paginado={paginado} ordenador={ordenador}/>
-        <SearchBar falseLoader={falseLoader}/>
-        <Link to={'/create'}>Create Poke</Link>
+        <div className={createActive?e.noActive:e.active}>
+          <TbArrowBack className={e.volver} onClick={()=>{
+            setCreateActive(!createActive);
+            setInput(objInput)
+            }}/>
+          <FormCreatePoke createActive={createActive} setCreateActive={setCreateActive} input={input} setInput={setInput} objInput={objInput}/>  
+        </div>
+    
+        <div className={!createActive ? e.blur : ''}>
+          <Filters paginado={paginado} ordenador={ordenador}/>
+          <button onClick={()=>setCreateActive(!createActive)}>CREAR POKEMON</button>
+          <SearchBar falseLoader={falseLoader}/>
+        </div>
+
+        
           {load ? 
           <>
-            <Paginado 
-              pokePorPagina={pokePorPagina}
-              dataPoke={dataPoke.length}
-              paginado={paginado}
-            />
-            <div className={e.containerCardsFlex}>
+            <div className={!createActive ? e.blur : ''}>
+              <Paginado 
+                pokePorPagina={pokePorPagina}
+                dataPoke={dataPoke.length}
+                paginado={paginado}
+              />
+            </div>
+            <div className={!createActive ? `${e.blur} ${e.containerCardsFlex}` : `${e.containerCardsFlex}`}>
               <div className={e.containerCards}>
                 { dataPoke.length > 0 ? 
                   dataPoke.length && pokePaginaAcutal.map(p => 
@@ -69,11 +108,13 @@ const Cards = () => {
                 }
               </div>
             </div>
-            <Paginado 
-            pokePorPagina={pokePorPagina}
-            dataPoke={dataPoke.length}
-            paginado={paginado}
-          /> 
+            <div className={!createActive ? e.blur : ''}>
+              <Paginado 
+              pokePorPagina={pokePorPagina}
+              dataPoke={dataPoke.length}
+              paginado={paginado}
+              /> 
+            </div>
           </>
             
           :

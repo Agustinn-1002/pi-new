@@ -20,6 +20,13 @@ export function getTypes () {
     }    
 }
 
+export function postPoke (datos) {
+    return async function (dispatch) {
+        const data = await axios.post('http://localhost:3001/pokemons',datos);
+        return data
+    }    
+}
+
 export function getDetaildDataPoke (id) {
     return async function (dispatch) {
         const detaildPoke = await axios.get(`http://localhost:3001/pokemons/${id}`);

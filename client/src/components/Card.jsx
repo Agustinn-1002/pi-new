@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const Card = (props) => {
   return (
     <div className={e.cardPoke}>
-      <Link to={`/home/${props.id}`}>
+      <Link to={`/Home/${props.id}`}>
         <img src={props.image} alt="" />
         <p>{props.name}</p>
         <p>{props.attack}</p>

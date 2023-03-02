@@ -35,6 +35,10 @@ function rootReducer(state = initialState , action){
                 ...state,
                 types: action.payload
             }
+        case 'POST-POKE':
+            return{
+                ...state
+            }
         case 'SET-CURRENT':
             return {
                 ...state,

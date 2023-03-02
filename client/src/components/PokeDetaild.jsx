@@ -52,7 +52,6 @@ const PokeDetaild = () => {
                 </p>
               </div>
               <h3>Numero de pokemon: {e.id}</h3>
-              <h3>id: {e.id}</h3>
               <ul>
                 estadisticas: 
                 <li>Vida: {e.hp}</li>
