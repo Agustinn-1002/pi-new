@@ -8,8 +8,22 @@
     align-items: flex-start;
     z-index: 100000;
 }
+.blur{
+    position: fixed;
+    display: flex;
+    left: 0;
+    top:10%;
+    width: 30rem;
+    justify-content: space-around;
+    align-items: flex-start;
+    z-index: 100000;
+    filter: blur(2px);
+}
 
 @media (max-width:1500px){
+    .blur{
+        top:0;
+    }
     .contain{
         top:0;
     }

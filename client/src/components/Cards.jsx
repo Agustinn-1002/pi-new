@@ -7,7 +7,6 @@ import Filters from './Filters'
 import SearchBar from './SearchBar'
 import Loader from './Loader'
 import FormCreatePoke from './FormCreatePoke'
-import {TbArrowBack} from 'react-icons/tb'
 
 
 const Cards = () => {
@@ -19,23 +18,23 @@ const Cards = () => {
   const [createActive , setCreateActive]  = useState(true)
   const objInput = {  
   name:"", 
-  hp:"", 
-  defense:"", 
-  attack:"", 
-  speed:"", 
-  height:"", 
-  weight:"",
+  hp:0, 
+  defense:0, 
+  attack:0, 
+  speed:0, 
+  height:0, 
+  weight:0,
   types:[], 
   image:""
 }
   const [input, setInput] = useState({
     name:"", 
-    hp:"", 
-    defense:"", 
-    attack:"", 
-    speed:"", 
-    height:"", 
-    weight:"",
+    hp:0, 
+    defense:0, 
+    attack:0, 
+    speed:0, 
+    height:0, 
+    weight:0,
     types:[], 
     image:""
   })
@@ -66,15 +65,25 @@ const Cards = () => {
   return (
     <>
         <div className={createActive?e.noActive:e.active}>
-          <TbArrowBack className={e.volver} onClick={()=>{
-            setCreateActive(!createActive);
-            setInput(objInput)
-            }}/>
+          <div className={e.volver} onClick={()=>{
+                setCreateActive(!createActive);
+                setInput(objInput)
+              }}>
+            <lord-icon 
+              src="https://cdn.lordicon.com/zmkotitn.json" 
+              trigger="loop-on-hover" delay={10} 
+              colors="primary:#121331" 
+              state="hover-3" 
+              style={{width: '30px', height: '60px'}}
+              >  
+            </lord-icon>
+          </div>
           <FormCreatePoke createActive={createActive} setCreateActive={setCreateActive} input={input} setInput={setInput} objInput={objInput}/>  
         </div>
     
-        <div className={!createActive ? e.blur : ''}>
-          <Filters paginado={paginado} ordenador={ordenador}/>
+        <Filters createActive={createActive} paginado={paginado} ordenador={ordenador}/>
+
+        <div className={!createActive ? `${e.navegacion} ${e.blur}` : e.navegacion}>
           <button onClick={()=>setCreateActive(!createActive)}>CREAR POKEMON</button>
           <SearchBar falseLoader={falseLoader}/>
         </div>

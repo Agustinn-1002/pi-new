@@ -1,0 +1,35 @@
+.container{
+}
+
+.container input{
+    border: 0;
+    outline: 0;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+    background-color: #dfdfdf;
+    padding: 5px;
+    transition: all 0.2s ease-in-out;
+
+}
+
+.container button{
+    border: 0.2px solid #2468B1;
+    outline: 0;
+    background-color: #fff;
+    color: #2468b1;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.container button:hover{
+    background-color: #2468b1;
+    color: #fff;
+
+}
+
+.container input:focus{
+    background-color: #fdfdfd;
+}

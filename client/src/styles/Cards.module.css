@@ -4,7 +4,31 @@
     justify-content: flex-end;
     margin-right: 20vh;
 }
-
+.navegacion{
+    position: absolute;
+    height: 6%;
+    width: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: -auto;
+}
+.navegacion button{
+    outline: 0;
+    cursor: pointer;
+    background-color: #fff;
+    color: #2468B1;
+    border: 1px solid #2468B1;
+    padding: 5px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+.navegacion button:hover{
+    background-color: #2468B1;
+    color: #fff;
+}
 .containerCards {
     display: grid;
     height: auto;
@@ -14,7 +38,6 @@
 }
 .blur{
     filter: blur(2px);
-    
 }
 .noActive{
     transform: scale(0);
@@ -28,6 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10000000;
 }   
 .active{
     background-color: rgba(24, 30, 88, 0.7);
@@ -45,24 +69,33 @@
 
 .volver{
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     left: 0;
     top: 0;
-    font-size: 2rem;
     margin: 5% 10%;
     color: rgba(24, 30, 88, 0.7);
     border-radius: 50%;
-    padding: 15px;
+    width: 4%;
+    height: 8%;
     background-color: #fff;
     cursor: pointer;
-    transition: all 0.2s;
+    rotate: 180deg;
 }
-.volver:hover{
-    background-color: rgb(150, 19, 19);
-    color: #fff;
-    padding: 16px;
-    
-}
+
 @media (max-width: 1500px){
+    .navegacion{
+        position: absolute;
+        height: 9%;
+        top: 0;
+        right: 0;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 7%;
+    }
     .containerCardsFlex{
         position: relative;
         display: flex;

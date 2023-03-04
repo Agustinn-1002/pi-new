@@ -32,7 +32,7 @@ const Filters = (props) => {
         props.paginado(1)
     }  
   return (
-    <div className={e.contain}>
+    <div className={props.createActive? e.contain : e.blur}>
         <div className={e.containCreated}>
             <h2>Creados</h2>
             <p className={createDbOrNot === 'All' ? e.active : null} onClick={() => handleFilterByCreate('All')}>Todos los pokemones</p>

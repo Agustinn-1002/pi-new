@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import { getSearchPokeByName } from '../redux/actions'
+import e from '../styles/SearchBar.module.css'
 
 const SearchBar = ({falseLoader}) => {
   const dispatch = useDispatch()
@@ -19,12 +20,13 @@ const SearchBar = ({falseLoader}) => {
   }
 
   return (
-    <form onSubmit={()=>handleSubmit(name)}>
+    <form className={e.container} onSubmit={()=>handleSubmit(name)}>
       <input 
         type="text" 
         placeholder='Buscar Nombre ...'
         onChange={(e) => changeInput(e)}
         value={name}
+        className={e.container}
       />
       <button onClick={(e)=>handleSubmit(e)} type='submit'>Buscar</button>
     </form>

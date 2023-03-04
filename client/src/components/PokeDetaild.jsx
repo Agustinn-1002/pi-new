@@ -4,7 +4,6 @@ import {useParams} from 'react-router-dom'
 import { filterByCreateOrNot, filterByOrder, filterByTypes, getDetaildDataPoke, setCurrentPage } from '../redux/actions';
 import Loader from './Loader';
 import {Link} from 'react-router-dom'
-import {BsArrowReturnLeft} from 'react-icons/bs'
 import s from '../styles/PokeDetald.module.css'
 
 const PokeDetaild = () => {
@@ -31,7 +30,9 @@ const PokeDetaild = () => {
         getDataDetailsPoke.map(e =>   
           <div key={e.id} className={s.container}>
             <Link to={'/Home'} className={s.volver} onClick={()=>reset()}>
-              <BsArrowReturnLeft/>
+             
+              <lord-icon src="https://cdn.lordicon.com/jxwksgwv.json" trigger="loop-on-hover" delay={300} colors="primary:#ffffff" state="hover-3" style={{width: '50px', height: '50px'}}>
+              </lord-icon>
             </Link>
             <img src={e.image} alt="" className={e.imagen}/>
             <div>
