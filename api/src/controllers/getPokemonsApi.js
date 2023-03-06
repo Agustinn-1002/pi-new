@@ -10,6 +10,7 @@ const getApi = async () => {
         e.types = data.types.map(i => i.type.name);
         e.attack = data.stats[1]['base_stat'];
         e.hp = data.stats[0]['base_stat'];
+        e.defense = data.stats[2]['base_stat'];
     }
     info.sort((a,b)=>{
         const nA = a.name;

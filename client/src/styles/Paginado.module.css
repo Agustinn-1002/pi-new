@@ -9,6 +9,7 @@
     width: 100px;
     height: 40px;
     margin: 10px 0;
+    transition: all 0.2s ease;
 }
 .element{
     padding:12px 15px;
@@ -16,7 +17,11 @@
     border-radius: 10px;
     border: 1px solid #aaa;
     cursor: pointer;
+    transition: all 0.2s ease;
+
 }
 .active{
-    background-color: red;
+    background-color: #2468B1;
+    color: #fff;
+    border: none;
 }

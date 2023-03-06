@@ -2,6 +2,34 @@
     background-color: #fff;
     width: 550px;
     height: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.formImage{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.formData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-left: 10%
+}
+.formData p{
+    line-height: 20px;
+    margin: 0;
+}
+
+.imagePrevew{
+    width: 300px;
+    height: 300px;
+    margin: 0;
 }
 
 @media (min-width: 1700px) {
@@ -10,5 +38,72 @@
         background-color: #fff;
         width: 880px;
         height: 880px;
+    }
+    .formData{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+       font-size: 1.5rem;
+       text-align: left;
+       margin: 0;
+    }
+    .imagePrevew{
+        width: 400px;
+        height: 400px;
+        margin: 0 0 0 10%;
+    }
+
+    .range{
+        width: 100%;
+        display: flex;
+        margin-top: 8%;
+    }
+    .errorHeight{
+        position: absolute;
+        padding-top: 1.2%;
+        font-size: 0.9rem;
+        color: red;
+    }
+
+    .errorName{
+        position: absolute;
+        font-size: 0.9rem;
+        color: red; 
+        padding-top: 0%;
+    }
+
+    .typeContain{
+        margin-top: 8%;
+    }
+    .typeSelect{
+        display: flex;
+        width: 100%;
+        
+    }
+    .divTypes{
+        display: inline;
+        color: #fff;
+        padding: 3%;
+        background: #2468B1;
+        margin-right: 5%;
+        margin-top: 5%;
+        border-radius: 25px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: auto;
+        font-size: 1rem;
+        text-transform:uppercase;
+    }
+    .divTypes:hover{
+        background: #205288;
+        
+    }
+    .deleteBtn{
+        font-weight: bolder;
+        margin-left: 10px;
+        cursor: pointer;
     }
 }

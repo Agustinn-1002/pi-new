@@ -10,7 +10,6 @@ import FormCreatePoke from './FormCreatePoke'
 
 
 const Cards = () => {
-  let i = 1
   const dataPoke = useSelector(e => e.getDataPokemons)
   const [ orden , setOrden ] = useState('');
 
@@ -109,7 +108,7 @@ const Cards = () => {
                       name = {p.name}
                       types = {p.types}
                       attack = {p.attack}
-                      className = {`e.div${i++}`}
+                      defense = {p.defense}
                     />
                   )
                   :

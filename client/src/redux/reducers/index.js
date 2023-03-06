@@ -47,6 +47,9 @@ function rootReducer(state = initialState , action){
         case 'GET-SEARCH-POKE':
             return {
                 ...state,
+                typesActual: 'All',
+                orderActual: 'asc',
+                createDbOrNot: 'All',
                 getDataPokemons: action.payload
             }
         case 'FILTER-TYPES':

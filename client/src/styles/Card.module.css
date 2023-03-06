@@ -1,9 +1,72 @@
 .cardPoke{
     border: 1px solid black;
     padding: 10px;
+    overflow: hidden;
+    transition: all 0.1s ease;
+    cursor: pointer;
 }
 img{
     width: 50%;
     height: 50%;
     object-fit: contain;
+    transition: all 0.2s ease;
+
+}
+.contain{
+    text-decoration: none;
+    color: black;
+}
+.titulo{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caracteristicas{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    color: #999;
+    align-items: flex-start;
+    margin-top: -5%;
+    transition: all 0.5s ease;
+}
+
+.stast{
+    text-transform: uppercase;
+}
+
+.types{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+.types span{
+    line-height: 1.3em;
+    color:#222;
+}
+
+.cardPoke:hover{
+    background-color: #0001;
+}
+
+.cardPoke:hover img{
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.cardPoke:hover .caracteristicas{
+    display: none;
 }

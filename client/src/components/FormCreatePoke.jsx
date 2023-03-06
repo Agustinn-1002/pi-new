@@ -73,10 +73,17 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
   }));
   }
 
+  const handleDelete = (type, e) => {
+    e.preventDefault();
+    setInput({
+        ...input,
+        types: input.types.filter(t => t !== type)
+    })
+}
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(postPoke(input))
-    alert('Pokemon Creado Correctamente')
     setInput(objInput)
     navigate(0)
     setCreateActive(!createActive)
@@ -89,57 +96,61 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
           <h1>Crear Pokemon</h1>
       </div>
 
-      <div>
+      <div className={e.formImage}>
 
-        <div>
+        <div className={e.formData}>
 
-          <div>
-            <label>Nombre del pokemon</label>
+          <div className={e.status}>
+            <p>Nombre del pokemon</p>
             <input type="text" name='name'  onChange={handleChange} value={input.name}/>
-            <span className={e.errorName}>{errors?.name}</span>
+            <p className={e.errorName}>{errors?.name}</p>
           </div>
 
-          <div>
-            <span>Vida: {input.hp}</span>
+          <div className={e.range}>
+            <p>Vida:</p>
             <input type="range" min='0' max='500' name='hp' value={input.hp} onChange={handleChange}/>
+            <span>{input.hp}</span>
           </div>
 
-          <div>
-            <span>attack: {input.attack}</span>
+          <div className={e.range}>
+            <p>attack:</p>
             <input type="range" min='0' max='500' name='attack' value={input.attack} onChange={handleChange}/>
+            <span>{input.attack}</span>
           </div>
 
-          <div>
-            <span>defense: {input.defense}</span>
+          <div className={e.range}>
+            <p>defense:</p>
             <input type="range" min='0' max='500' name='defense' value={input.defense} onChange={handleChange}/>
+            <span>{input.defense}</span>
           </div>
 
-          <div>
-            <span>speed: {input.speed}</span>
+          <div className={e.range}>
+            <p>speed:</p>
             <input type="range" min='0' max='500' name='speed' value={input.speed} onChange={handleChange}/>
+            <span>{input.speed}</span>
           </div>
 
-          <div>
-            <span>Peso (kg):</span>
+          <div className={e.range}>
+            <p>Peso (kg):</p>
             <input type="number" name='weight' value={input.weight} onChange={handleChange}/>
-            <span className={e.errorWeight}>{errors?.weight}</span>
+            <p className={e.errorHeight}>{errors?.weight}</p>
           </div>
 
-          <div>
-            <span>Altura (Metros):</span>
+          <div className={e.range}>
+            <p>Altura (Mts):</p>
             <input type="number" name='height' value={input.height} onChange={handleChange}/>
-            <span className={e.errorHeight}>{errors?.height}</span>
+            <p className={e.errorHeight}>{errors?.height}</p>
           </div>
 
-          <div>
-            <span>imagen (url):</span>
-            <input type="text" name='image' value={input.image} placeholder={'URL...'} onChange={handleChange}/>
+          <div className={e.range}>
+            <p>imagen (url):</p>
+            <input  type="text" name='image' value={input.image} placeholder={'URL...'} onChange={handleChange}/>
           </div>
 
           
 
-          <div>
-            <span>Seleccionar Tipo</span>
+          <div className={e.typeContain}>
+            <p>Seleccionar Tipo: </p>
             <select onChange={(e) => handleTypes(e)} disabled={input.types.length === 2 ? true : false}>
               
               {
@@ -148,23 +159,28 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
                   )
               }
             </select>
-            <span className={e.errorTypes}>{errors?.types}</span>
+            <p className={e.errorName}>{errors?.types}</p>
           </div>
 
-          <div>
-            <ul>
+          <div className={e.typeSelect}>
               {input.types.map(type =>  
-                  <div className={`${e.divTypes} ${e[type]}`}>
-                      <li className={e.liTypes}> {type} </li>
-                      <IoClose className={e.deleteBtn} /*onClick={(e) => handleDelete(type, e)}*/ color='#000' />
+                  <div className={e.divTypes}>
+                      <b className={e.liTypes}> {type} </b>
+                      <IoClose color='#fff' className={e.deleteBtn} onClick={(e) => handleDelete(type, e)} />
                   </div>                    
               )}
-            </ul>
           </div>
 
         </div>
 
-        <div></div>
+        <div>
+          {
+            input.image.length ? 
+              <img className={e.imagePrevew} src={input.image} alt="imgPokemon"/>
+              : 
+              <img className={e.imagePrevew} src='https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg' alt="imgPokemon"/>
+          }
+        </div>
 
       </div>
         
