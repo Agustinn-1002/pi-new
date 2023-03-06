@@ -32,4 +32,5 @@
 
 .container input:focus{
     background-color: #fdfdfd;
+    border-bottom:0.2px solid #2468B1 ;
 }

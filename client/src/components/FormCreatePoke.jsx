@@ -102,7 +102,7 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
 
           <div className={e.status}>
             <p>Nombre del pokemon</p>
-            <input type="text" name='name'  onChange={handleChange} value={input.name}/>
+            <input className={errors.name ? e.errorInput : ''} placeholder='Nombre...' type="text" name='name' onChange={handleChange} value={input.name}/>
             <p className={e.errorName}>{errors?.name}</p>
           </div>
 
@@ -132,13 +132,13 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
 
           <div className={e.range}>
             <p>Peso (kg):</p>
-            <input type="number" name='weight' value={input.weight} onChange={handleChange}/>
+            <input className={errors.weight ? e.errorInput : ''} type="number" name='weight' value={input.weight} onChange={handleChange}/>
             <p className={e.errorHeight}>{errors?.weight}</p>
           </div>
 
           <div className={e.range}>
             <p>Altura (Mts):</p>
-            <input type="number" name='height' value={input.height} onChange={handleChange}/>
+            <input className={errors.height ? e.errorInput : ''} type="number" name='height' value={input.height} onChange={handleChange}/>
             <p className={e.errorHeight}>{errors?.height}</p>
           </div>
 
@@ -151,7 +151,7 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
 
           <div className={e.typeContain}>
             <p>Seleccionar Tipo: </p>
-            <select onChange={(e) => handleTypes(e)} disabled={input.types.length === 2 ? true : false}>
+            <select className={errors.types ? e.errorInput : ''} onChange={(e) => handleTypes(e)} disabled={input.types.length === 2 ? true : false}>
               
               {
                   types?.map(t =>
@@ -184,7 +184,10 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
 
       </div>
         
-      <button type='submit' disabled={errors.name || errors.weight || errors.height || errors.types || input.name === '' || !input.types.length ? true : false}>Crear</button>
+      <button 
+        className={errors.name || errors.weight || errors.height || errors.types || input.name === '' || !input.types.length ? e.submitButtonDisable : e.submitButton} 
+        type='submit' 
+        disabled={errors.name || errors.weight || errors.height || errors.types || input.name === '' || !input.types.length ? true : false}>Crear</button>
     </form>
   )
 }

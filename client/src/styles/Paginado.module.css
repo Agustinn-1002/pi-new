@@ -20,6 +20,9 @@
     transition: all 0.2s ease;
 
 }
+.elementPrev:hover{
+    background-color: #ddd;
+}
 .active{
     background-color: #2468B1;
     color: #fff;

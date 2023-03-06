@@ -24,7 +24,7 @@ const Paginado = ({pokePorPagina , dataPoke , paginado}) => {
                             behavior: 'smooth'
                           })
                         }}>
-                        <a className={activePage == i ? `${e.active} ${e.element }`: e.element} key={i} onClick={() => paginado(i)}>{i}</a>
+                        <a className={activePage == i ? `${e.active} ${e.element }`: `${e.element} ${e.elementPrev}`} key={i} onClick={() => paginado(i)}>{i}</a>
                     </div>
                 )}
         </nav>

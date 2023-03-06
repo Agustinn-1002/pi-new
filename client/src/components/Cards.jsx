@@ -7,6 +7,7 @@ import Filters from './Filters'
 import SearchBar from './SearchBar'
 import Loader from './Loader'
 import FormCreatePoke from './FormCreatePoke'
+import { Link } from 'react-router-dom'
 
 
 const Cards = () => {
@@ -64,10 +65,11 @@ const Cards = () => {
   return (
     <>
         <div className={createActive?e.noActive:e.active}>
-          <div className={e.volver} onClick={()=>{
+          <a href='Home#' className={e.volver} onClick={()=>{
                 setCreateActive(!createActive);
                 setInput(objInput)
               }}>
+                
             <lord-icon 
               src="https://cdn.lordicon.com/zmkotitn.json" 
               trigger="loop-on-hover" delay={10} 
@@ -76,14 +78,14 @@ const Cards = () => {
               style={{width: '30px', height: '60px'}}
               >  
             </lord-icon>
-          </div>
+          </a>
           <FormCreatePoke createActive={createActive} setCreateActive={setCreateActive} input={input} setInput={setInput} objInput={objInput}/>  
         </div>
     
         <Filters createActive={createActive} paginado={paginado} ordenador={ordenador}/>
 
         <div className={!createActive ? `${e.navegacion} ${e.blur}` : e.navegacion}>
-          <button onClick={()=>setCreateActive(!createActive)}>CREAR POKEMON</button>
+          <a href='#create' onClick={()=>setCreateActive(!createActive)}>CREAR POKEMON</a>
           <SearchBar falseLoader={falseLoader}/>
         </div>
 
