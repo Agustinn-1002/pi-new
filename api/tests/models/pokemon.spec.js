@@ -6,6 +6,7 @@ describe('Pokemon model', () => {
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
     }));
+  //Validando Nombre Requerido 
   describe('Validators', () => {
     beforeEach(() => Pokemon.sync({ force: true }));
     describe('name', () => {
@@ -19,4 +20,15 @@ describe('Pokemon model', () => {
       });
     });
   });
+  //Validando tipo de dato en HP
+  describe('HP',()=>{
+    it('Lanza un error si HP no es un numero', (done) => {
+      Pokemon.create({hp: 'Hello'})
+        .then(()=>done(new Error ('debe ser un numero')))
+        .catch(() => done());
+    })
+    it('Funciona con un numero', () =>{
+      Pokemon.create({attack: 20})
+    })
+  })
 });

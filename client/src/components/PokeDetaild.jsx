@@ -43,18 +43,25 @@ const PokeDetaild = () => {
                   e.types.map((i,index) => 
                   <>
                      <b>{i}</b>
-                     <b style={{color:'white'}}>.</b>
-                     /
-                     <b style={{color:'white'}}>.</b>
+                     {
+                      e.types.length > 1 ?
+                      <>
+                        <b style={{color:'white'}}>.</b>
+                        <b>/</b>
+                        <b style={{color:'white'}}>.</b>
+                      </>
+                      :
+                      null
+                     }
 
                   </>
                   )
                 }
                 </p>
               </div>
-              <h3>Numero de pokemon: {e.id}</h3>
+              <h3>Numero de pokemon: {e.id.length > 5 ? e.id.substr(0,5):e.id}</h3>
               <ul>
-                estadisticas: 
+                <p>estadisticas:</p> 
                 <li>Vida: {e.hp}</li>
                 <li>ataque: {e.attack}</li>
                 <li>defensa: {e.defense}</li>
