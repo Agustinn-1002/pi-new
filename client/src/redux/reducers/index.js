@@ -91,7 +91,7 @@ function rootReducer(state = initialState , action){
                     getDataPokemons: {msg: `NO SE ENCONTRO NUNGUN POKEMON CON EL TIPO ${action.payload.toUpperCase()}`}
                 }
             }
-            console.log(state.getAllDataPokemons.length);
+
             return {
                 ...state,
                 typesActual: action.payload,

@@ -60,7 +60,6 @@ const Cards = () => {
     }, 5000);
     
   }
-  console.log(createActive);
 
   return (
     <>

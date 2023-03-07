@@ -85,8 +85,9 @@ const FormCreatePoke = ({input, setInput, objInput,setCreateActive,createActive}
     e.preventDefault()
     dispatch(postPoke(input))
     setInput(objInput)
-    navigate(0)
+    navigate('/Home')
     setCreateActive(!createActive)
+    navigate(0)
   }
 
   return (
