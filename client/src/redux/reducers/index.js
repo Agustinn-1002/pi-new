@@ -47,6 +47,7 @@ function rootReducer(state = initialState , action){
         case 'GET-SEARCH-POKE':
             return {
                 ...state,
+                currentPage:1,
                 typesActual: 'All',
                 orderActual: 'asc',
                 createDbOrNot: 'All',

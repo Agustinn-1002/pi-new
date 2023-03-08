@@ -69,6 +69,8 @@
     }
     .container input{
         outline: 0;
+        border-radius: 30px;
+        border: 0.5px solid #555;
     }
     .formData{
         display: flex;
@@ -139,6 +141,6 @@
     }
 
     .errorInput{
-        border: 0.5px solid red;
+        border: 0.5px solid red !important;
     }
 }

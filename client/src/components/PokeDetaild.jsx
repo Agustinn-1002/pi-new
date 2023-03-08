@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {useParams} from 'react-router-dom'
+import {useParams,useNavigate} from 'react-router-dom'
 import { filterByCreateOrNot, filterByOrder, filterByTypes, getDetaildDataPoke, setCurrentPage } from '../redux/actions';
 import Loader from './Loader';
 import {Link} from 'react-router-dom'
@@ -8,6 +8,7 @@ import s from '../styles/PokeDetald.module.css'
 
 const PokeDetaild = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
   let getDataDetailsPoke = useSelector(e => e.getDataDetailsPoke)
   const dispatch = useDispatch()
 
@@ -29,8 +30,7 @@ const PokeDetaild = () => {
         !getDataDetailsPoke.length ? <Loader/> : 
         getDataDetailsPoke.map(e =>   
           <div key={e.id} className={s.container}>
-            <Link to={'/Home'} className={s.volver} onClick={()=>reset()}>
-             
+            <Link to={'/Home'} className={s.volver} onClick={()=>reset()}>             
               <lord-icon src="https://cdn.lordicon.com/jxwksgwv.json" trigger="loop-on-hover" delay={300} colors="primary:#ffffff" state="hover-3" style={{width: '50px', height: '50px'}}>
               </lord-icon>
             </Link>

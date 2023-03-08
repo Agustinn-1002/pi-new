@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import { getSearchPokeByName } from '../redux/actions'
 import e from '../styles/SearchBar.module.css'
 
-const SearchBar = ({falseLoader}) => {
+const SearchBar = ({falseLoader,setPaginaActual}) => {
   const dispatch = useDispatch()
   const [name , setName] = useState('')
 
@@ -15,6 +15,7 @@ const SearchBar = ({falseLoader}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(getSearchPokeByName(name))
+    setPaginaActual(1)
     setName('')
     falseLoader()
   }

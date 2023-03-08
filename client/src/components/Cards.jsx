@@ -85,7 +85,7 @@ const Cards = () => {
 
         <div className={!createActive ? `${e.navegacion} ${e.blur}` : e.navegacion}>
           <a href='#create' onClick={()=>setCreateActive(!createActive)}>CREAR POKEMON</a>
-          <SearchBar falseLoader={falseLoader}/>
+          <SearchBar setPaginaActual={setPaginaActual} falseLoader={falseLoader}/>
         </div>
 
         
