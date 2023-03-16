@@ -6,7 +6,8 @@ const initialState = {
     currentPage: 1,
     typesActual: 'All',
     orderActual: 'asc',
-    createDbOrNot: 'All'
+    createDbOrNot: 'All',
+    serchText: '',
 } 
 
 function rootReducer(state = initialState , action){
@@ -44,14 +45,30 @@ function rootReducer(state = initialState , action){
                 ...state,
                 currentPage: action.payload
             }
+        case 'SEARCH-VALUE': 
+            return{
+                ...state,
+                serchText: action.payload
+            }
         case 'GET-SEARCH-POKE':
+            const datos = state.getAllDataPokemons.filter(e => e.name.toLowerCase().includes(action.payload.toLowerCase()))
+            if (!datos.length) {
+                return {
+                    ...state,
+                    currentPage:1,
+                    typesActual: 'All',
+                    orderActual: 'asc',
+                    createDbOrNot: 'All',
+                    getDataPokemons: {msg: `NO SE ENCONTRO NUNGUN POKEMON ${action.payload.toUpperCase()}`}
+                }
+            }
             return {
                 ...state,
                 currentPage:1,
                 typesActual: 'All',
                 orderActual: 'asc',
                 createDbOrNot: 'All',
-                getDataPokemons: action.payload
+                getDataPokemons: datos
             }
         case 'FILTER-TYPES':
 
@@ -80,6 +97,7 @@ function rootReducer(state = initialState , action){
             if (!arrayDb.length && action.payload === 'All' && state.createDbOrNot === "getDB") {
                 return {
                     ...state,
+                    serchText: '',
                     typesActual: action.payload,
                     getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
                 }
@@ -88,6 +106,7 @@ function rootReducer(state = initialState , action){
             if (!newArray.length) {
                 return {
                     ...state,
+                    serchText: '',
                     typesActual: action.payload,
                     getDataPokemons: {msg: `NO SE ENCONTRO NUNGUN POKEMON CON EL TIPO ${action.payload.toUpperCase()}`}
                 }
@@ -95,6 +114,7 @@ function rootReducer(state = initialState , action){
 
             return {
                 ...state,
+                serchText: '',
                 typesActual: action.payload,
                 getDataPokemons: newArray
             }
@@ -139,6 +159,7 @@ function rootReducer(state = initialState , action){
                 }
                 return{
                     ...state,
+                    serchText: '',
                     orderActual: action.payload,
                     getDataPokemons: orderArray
                 }
@@ -152,7 +173,7 @@ function rootReducer(state = initialState , action){
                 return {
                     ...state,
                     typesActual: 'All',
-                    
+                    serchText: '',
                     createDbOrNot: action.payload,
                     getDataPokemons: {msg: 'TODAVIA NO HAS CREADO POKEMONES'}
                 }
@@ -160,7 +181,7 @@ function rootReducer(state = initialState , action){
             return{
                 ...state,
                 typesActual: 'All',
-                
+                serchText: '',
                 createDbOrNot: action.payload ,
                 getDataPokemons: action.payload === 'All' ? 
                     state.getAllDataPokemons 

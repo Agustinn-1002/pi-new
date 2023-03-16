@@ -1,27 +1,22 @@
 import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import { getSearchPokeByName } from '../redux/actions'
+import {useDispatch, useSelector} from 'react-redux'
+import { getSearchPokeByName, searchValue } from '../redux/actions'
 import e from '../styles/SearchBar.module.css'
 
 const SearchBar = ({falseLoader,setPaginaActual}) => {
   const dispatch = useDispatch()
-  const [name , setName] = useState('')
+  
+  const name = useSelector(e=>e.serchText)
 
   const changeInput = (e) => {
     e.preventDefault()
-    setName(e.target.value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(getSearchPokeByName(name))
+    dispatch(searchValue(e.target.value))
+    dispatch(getSearchPokeByName(e.target.value))
     setPaginaActual(1)
-    setName('')
-    falseLoader()
   }
 
   return (
-    <form className={e.container} onSubmit={()=>handleSubmit(name)}>
+    <form className={e.container}>
       <input 
         type="text" 
         placeholder='Buscar Nombre ...'
@@ -29,7 +24,6 @@ const SearchBar = ({falseLoader,setPaginaActual}) => {
         value={name}
         className={e.container}
       />
-      <button onClick={(e)=>handleSubmit(e)} type='submit'>Buscar</button>
     </form>
   )
 }
